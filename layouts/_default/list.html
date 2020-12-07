@@ -1,0 +1,23 @@
+{{ define "main" }}
+<main>
+  {{if not .IsHome }}
+  <h1>{{ .Title | markdownify }}</h1>
+  {{ end }}
+
+  <div class="post-list">
+  <ul>
+    {{ $pages := .Pages }}
+    {{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
+    {{ range (where $pages "Section" "!=" "") }}
+      <li>
+        <div class="post">
+          <span class="pubdate"> {{ .Date.Format "Jan 02, 2006" }}</span> -
+          <span class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+        </div>
+      </li>
+    {{ end }}
+  </ul>
+  </div>
+</main>
+{{ end }}
+

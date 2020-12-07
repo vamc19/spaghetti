@@ -1,0 +1,18 @@
+<header>
+  <div class="site-header">
+    <span> 
+      <a href="{{ .Site.BaseURL }}" class="site-title">{{ .Site.Title }}</a>
+    </span>
+    <span>
+      <nav class="right-menu">
+			    {{ with .Site.Menus.main }}
+			      {{ range . }}
+			        <span class="menu-item">/<a href="{{ .URL | relURL }}">{{ .Name }}</a></span>
+			      {{ end }}
+			    {{ end }}
+	    </nav>
+	  </span>
+	</div>
+	
+	<div class="separator"> {{ strings.Repeat 160 "=" }} </div>
+</header>
